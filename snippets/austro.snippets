@@ -1,0 +1,41 @@
+snippet jump
+	elif opcode in _(${1:opcodes}):
+		if registers['${2:name}'] == 1:
+			self._jump(registers[op1])
+snippet optest
+	def test_${1:opcode}__reg_reg(self):
+		'''$1 should ${2:action} two registers'''
+
+		# mov instructions
+		assembly = ("mov ax, ${3:number}\n"
+					"mov bx, ${4:number}\n"
+					"$1 ax, bx\n"
+					"halt\n")
+		# registers
+		registers = ('AX', 'BX')
+		# expected messages
+		messages = ['AX=0,BX=0',	# start
+					'AX=$3,BX=0',	# after "mov ax, $3"
+					'AX=$3,BX=$4',	# after "mov bx, $4"
+					'AX=0,BX=$4',	# after "$1 ax, bx"
+					'AX=0,BX=$4']	# after "halt"
+
+		self.register_asserts(assembly, registers, messages)
+
+	@unittest.skip("Incomplete")
+	def test_$1__flags(self):
+		'''$1 should set flag Z'''
+
+		# mov instructions
+		assembly = ("mov ax, ${5:number}\n"
+					"$1 ax, ${6:number}\n"
+					"halt\n")
+		# registers
+		registers = ('Z')
+		# expected messages
+		messages = ['Z=0',  # start
+					'Z=0',  # after "mov ax, $5"
+					'Z=0',  # after "$1 ax, $6"
+					'Z=0']  # after "halt"
+
+		self.register_asserts(assembly, registers, messages)

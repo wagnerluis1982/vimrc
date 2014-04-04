@@ -1,0 +1,108 @@
+" Modo Vim ao invés do modo Vi (única forma eficiente de usar o Vim)
+set nocompatible
+
+" Opções copiadas do vimrc padrão do Ubuntu
+source ~/.vim/ubuntu.vim
+
+" Colorscheme
+au GUIEnter * colorscheme desert
+
+" Pathogen
+filetype off
+call pathogen#infect()
+call pathogen#helptags()
+
+" NOTE: Copiada de debian.vim
+set backspace=indent,eol,start
+
+" Indentation
+set cindent
+
+" Opções de tabulação
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+
+" Opções de pequisa e de padrões
+set showmatch
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+
+" Não faz backup, preserva o inode
+set nobackup
+set nowritebackup
+
+" NERDTree Explorer
+let g:nerdtree_tabs_open_on_gui_startup = 0
+au VimEnter * call add(NERDTreeIgnore, '\.pyc$')
+
+" Remove espaços em branco à direita
+let g:RightTrimIgnore = ['gitcommit']
+function! RightTrim()
+    if !(&binary) && !(&filetype =~ join(g:RightTrimIgnore, "|"))
+        let [line, column] = [line("."), virtcol(".")]
+        silent! %s/\s\+$//ge
+        execute line printf("normal %d|", column)
+    endif
+endfunction
+au BufWritePre * call RightTrim()
+
+" TODO: Tentar substituir para só salvar antes do :make
+" Salva automaticamente antes de comandos tipo :next e :make
+set autowrite
+
+" Permite configurações para cada arquivo
+set modeline
+
+" Define o local da quebra de linha para 80, se não foi definido previamente
+au BufNewFile,BufRead * if empty(&textwidth) | set textwidth=80 | endif
+
+" Marca o local da quebra de linha com uma linha vertical
+set colorcolumn=+1
+" Mas não marca em alguns tipos de arquivo
+au FileType help,cucumber,netrw setl cc=0
+
+" Verificação Ortográfica definida para Português
+set nospell spl=pt
+
+" Entra no diretório do arquivo lido
+"au BufRead * lcd %:h
+
+" Atalhos
+" Ctrl+T (Abre uma nova aba)
+    nmap <C-t> :tabnew<cr>
+" Ctrl+\ (Limpa destaque de pesquisa)
+    nmap <C-\> :let @/ = ''<cr>
+" F2 (Exibe explorer)
+    nmap <F2> :NERDTreeTabsToggle<cr>
+" Ctrl+Up (Rola a tela para cima)
+    nmap <C-Up> <C-y>
+    imap <C-Up> <Esc><C-y>a
+" Ctrl+Down (Rola a tela para baixo)
+    nmap <C-Down> <C-e>
+    imap <C-Down> <Esc><C-e>a
+" Ctrl+S (Salvar)
+    nmap <C-s> :w<cr>
+    imap <C-s> <C-o>:w<cr>
+
+" Alt+[ (Ortografia Anterior)
+    nmap <A-[> [s
+    imap <A-[> <Esc>[sa
+" Alt+] (Ortografia Próxima)
+    nmap <A-]> ]s
+    imap <A-]> <Esc>]sa
+" Alt+= (Correção Ortográfica)
+    nmap <A-=> z=
+" Alt+. (Ignorar Palavra)
+    nmap <A-.> zG
+" Alt+, (Não Ignorar Palavra)
+    nmap <A-,> zW
+
+" Configurações em https://wiki.documentfoundation.org/Development/Vim
+source ~/.vim/lodev.vim
+
+" Outras configurações específicas
+source ~/.vim/texrc.vim
