@@ -8,7 +8,6 @@ source ~/.vim/ubuntu.vim
 au GUIEnter * colorscheme desert
 
 " Pathogen
-filetype off
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -106,3 +105,6 @@ source ~/.vim/lodev.vim
 
 " Outras configurações específicas
 source ~/.vim/texrc.vim
+
+" Ignorando alguns avisos
+let g:pymode_lint_ignore = "E302"
