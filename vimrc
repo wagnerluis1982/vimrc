@@ -106,5 +106,10 @@ source ~/.vim/lodev.vim
 " Outras configurações específicas
 source ~/.vim/texrc.vim
 
-" Ignorando alguns avisos
+" PyMode Lint
+let g:pymode_lint_cwindow = 0
 let g:pymode_lint_ignore = "E302"
+
+" PyMode Rope
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_complete_on_dot = 0
