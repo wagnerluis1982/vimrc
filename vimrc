@@ -125,8 +125,8 @@ let g:pymode_lint_ignore = "E302"
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_complete_on_dot = 0
 
-" Removendo o menu e a barra de ferramentas
-set guioptions-=T guioptions-=m
+" Removendo o menu, barra de ferramentas e barra lateral e inferior
+set guioptions-=T guioptions-=m guioptions-=r guiheadroom=0
 
 " Full Screen support [superuser.com/questions/264693/how-can-i-open-gvim-in-full-screen-mode-in-gnome]
 function ToggleFullScreen()
