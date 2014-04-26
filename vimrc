@@ -128,6 +128,9 @@ let g:pymode_rope_complete_on_dot = 0
 " Removendo o menu, barra de ferramentas e barra lateral e inferior
 set guioptions-=T guioptions-=m guioptions-=r guiheadroom=0
 
+" Ir para linha anterior/próxima com as setas <Left>/<Right>
+set whichwrap=b,s,<,>,[,]
+
 " Full Screen support [superuser.com/questions/264693/how-can-i-open-gvim-in-full-screen-mode-in-gnome]
 function ToggleFullScreen()
     if !g:FullScreen
