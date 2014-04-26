@@ -127,3 +127,16 @@ let g:pymode_rope_complete_on_dot = 0
 
 " Removendo o menu e a barra de ferramentas
 set guioptions-=T guioptions-=m
+
+" Full Screen support [superuser.com/questions/264693/how-can-i-open-gvim-in-full-screen-mode-in-gnome]
+function ToggleFullScreen()
+    if !g:FullScreen
+        let g:FullScreen = 1
+    else
+        let g:FullScreen = 0
+    endif
+    call ToggleColorColumn()
+    call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
+endfunction
+let g:FullScreen = 0
+map <silent> <F11> :call ToggleFullScreen()<CR>
