@@ -60,8 +60,19 @@ set modeline
 au BufNewFile,BufRead * if empty(&textwidth) | set textwidth=80 | endif
 
 " Marca o local da quebra de linha com uma linha vertical
-set colorcolumn=+1
-" Mas não marca em alguns tipos de arquivo
+function ToggleColorColumn()
+    if !g:ColorColumn
+        let g:ColorColumn = 1
+        set colorcolumn=+1
+    else
+        let g:ColorColumn = 0
+        set colorcolumn=
+    endif
+endfunction
+let g:ColorColumn = 0
+call ToggleColorColumn()
+
+" Não marca ColorColumn em alguns tipos de arquivo
 au FileType help,cucumber,netrw setl cc=0
 
 " Verificação Ortográfica definida para Português
