@@ -15,7 +15,7 @@ call pathogen#helptags()
 set backspace=indent,eol,start
 
 " Indentation
-set cindent
+set smartindent
 
 " Opções de tabulação
 set tabstop=4
