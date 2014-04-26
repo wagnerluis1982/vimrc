@@ -124,3 +124,6 @@ let g:pymode_lint_ignore = "E302"
 " PyMode Rope
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_complete_on_dot = 0
+
+" Removendo o menu e a barra de ferramentas
+set guioptions-=T guioptions-=m
