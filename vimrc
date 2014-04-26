@@ -71,8 +71,8 @@ set nospell spl=pt
 "au BufRead * lcd %:h
 
 " Atalhos
-" Ctrl+T (Abre uma nova aba)
-    nmap <C-t> :tabnew<cr>
+" Ctrl+Tab (Abre uma nova aba)
+    nmap <C-Tab> :tabnew<cr>
 " Ctrl+\ (Limpa destaque de pesquisa)
     nmap <C-\> :let @/ = ''<cr>
 " F2 (Exibe explorer)
