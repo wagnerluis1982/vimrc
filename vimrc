@@ -119,7 +119,7 @@ source ~/.vim/texrc.vim
 
 " PyMode Lint
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_ignore = "E302"
+let g:pymode_lint_ignore = "E128,E302"
 
 " PyMode Rope
 let g:pymode_rope_lookup_project = 0
@@ -130,6 +130,9 @@ set guioptions-=T guioptions-=m guioptions-=r guiheadroom=0
 
 " Ir para linha anterior/próxima com as setas <Left>/<Right>
 set whichwrap=b,s,<,>,[,]
+
+" Símbolo para indicar wrap
+set showbreak=↳
 
 " Full Screen support [superuser.com/questions/264693/how-can-i-open-gvim-in-full-screen-mode-in-gnome]
 function ToggleFullScreen()
