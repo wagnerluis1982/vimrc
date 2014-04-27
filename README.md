@@ -1,12 +1,23 @@
-Meu vimrc
-=========
+# Meu vimrc
 
-Principais recursos:
+Para instalar, copie os dados para o diretório $HOME/.vim e faça um link
+simbólico de $HOME/.vim/vimrc para $HOME/.vimrc
+
+Um outro passo é instalar os submódulos. Eles estão listados em .gitmodules e se
+estiver usando o `git`, basta executar dentro do diretório .vim
+
+    $ git submodule init
+    $ git submodule update
+
+que todos os submódulos serão baixados
+
+
+## Principais recursos
 
 * PyMode
 * NerdTree
 
-Atalhos conhecidos (funcionam mesmo no modo de inserção):
+### Atalhos conhecidos (funcionam mesmo no modo de inserção)
 
     Atalho            |               Descrição
 --------------------- | ----------------------------------------------------
