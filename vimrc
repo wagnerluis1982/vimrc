@@ -59,21 +59,34 @@ set modeline
 " Define o local da quebra de linha para 80, se não foi definido previamente
 au BufNewFile,BufRead * if empty(&textwidth) | set textwidth=80 | endif
 
-" Marca o local da quebra de linha com uma linha vertical
+" Permite alternar o modo de exibir local da quebra de linha
 function ToggleColorColumn()
     if !g:ColorColumn
         let g:ColorColumn = 1
-        set colorcolumn=+1
     else
         let g:ColorColumn = 0
-        set colorcolumn=
     endif
 endfunction
+
+" Inicia no modo exibir linha
 let g:ColorColumn = 0
 call ToggleColorColumn()
 
-" Não marca ColorColumn em alguns tipos de arquivo
-au FileType help,cucumber,netrw setl cc=0
+" Função que marca o local da quebra de linha
+let g:FileTypeSkip = ['help', 'cucumber', 'netrw']
+function SetColorColumn()
+    if index(g:FileTypeSkip, &filetype) != -1
+        setlocal colorcolumn=
+    elseif g:ColorColumn
+        set colorcolumn=+1
+    else
+        set colorcolumn=
+    endif
+endfunction
+
+" Faz exibir o local da quebra de linha e auto-exibe a cada buffer visitado
+call SetColorColumn()
+au BufEnter * call SetColorColumn()
 
 " Verificação Ortográfica definida para Português
 set nospell spl=pt
@@ -135,6 +148,7 @@ set whichwrap=b,s,<,>,[,]
 set showbreak=↳
 
 " Full Screen support [superuser.com/questions/264693/how-can-i-open-gvim-in-full-screen-mode-in-gnome]
+let g:FullScreen = 0
 function ToggleFullScreen()
     if !g:FullScreen
         let g:FullScreen = 1
@@ -142,7 +156,7 @@ function ToggleFullScreen()
         let g:FullScreen = 0
     endif
     call ToggleColorColumn()
+    call SetColorColumn()
     call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
 endfunction
-let g:FullScreen = 0
 map <silent> <F11> :call ToggleFullScreen()<CR>
