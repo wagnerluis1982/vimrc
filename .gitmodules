@@ -13,3 +13,9 @@
 [submodule "bundle/nerdtree-tabs"]
 	path = bundle/nerdtree-tabs
 	url = git://github.com/jistr/vim-nerdtree-tabs.git
+[submodule "bundle/fontsize"]
+	path = bundle/fontsize
+	url = git@github.com:drmikehenry/vim-fontsize.git
+[submodule "bundle/vim-json"]
+	path = bundle/vim-json
+	url = git@github.com:elzr/vim-json.git
