@@ -10,12 +10,13 @@ au GUIEnter * colorscheme desert
 " Pathogen
 call pathogen#infect()
 call pathogen#helptags()
+filetype plugin indent on
 
 " NOTE: Copiada de debian.vim
 set backspace=indent,eol,start
 
 " Indentation
-set smartindent
+"set smartindent
 
 " Opções de tabulação
 set tabstop=4
@@ -124,7 +125,7 @@ set nospell spl=pt
 " Alt+, (Não Ignorar Palavra)
     nmap <A-,> zW
 
-" Configurações em https://wiki.documentfoundation.org/Development/Vim
+" Configurações de https://wiki.documentfoundation.org/Development/Vim
 source ~/.vim/lodev.vim
 
 " Outras configurações específicas
