@@ -139,8 +139,12 @@ let g:pymode_lint_ignore = "E128,E302"
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_complete_on_dot = 0
 
+function! NetReadFixup(method,line1,line2)
+    let g:pymode_rope = 0
+endfunction
+
 " Removendo o menu, barra de ferramentas e barra lateral e inferior
-set guioptions-=T guioptions-=m guioptions-=r guiheadroom=0
+set guioptions-=T guioptions-=m guioptions-=r guioptions-=R guioptions-=l guioptions-=L guioptions-=b
 
 " Ir para linha anterior/próxima com as setas <Left>/<Right>
 set whichwrap=b,s,<,>,[,]
