@@ -140,7 +140,7 @@ source ~/.vim/texrc.vim
 
 " PyMode Lint
 let g:pymode_lint_cwindow = 0
-let g:pymode_lint_ignore = "E128,E302"
+let g:pymode_lint_ignore = "E116,E128,E302"
 
 " PyMode Rope
 let g:pymode_rope_lookup_project = 0
