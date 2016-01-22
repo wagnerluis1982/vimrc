@@ -16,7 +16,7 @@ filetype plugin indent on
 set backspace=indent,eol,start
 
 " Indentation
-"set smartindent
+set autoindent
 
 " Opções de tabulação
 set tabstop=4
@@ -34,6 +34,13 @@ set hlsearch
 " Não faz backup, preserva o inode
 set nobackup
 set nowritebackup
+
+" Histórico grande
+set history=2000
+
+" Parâmetros do split window
+set splitright
+set splitbelow
 
 " NERDTree Explorer
 let g:nerdtree_tabs_open_on_gui_startup = 0
@@ -143,10 +150,16 @@ function! NetReadFixup(method,line1,line2)
     let g:pymode_rope = 0
 endfunction
 
+" TableMode compatível com Pandoc
+"let g:table_mode_corner_corner = '+'
+
 " Removendo o menu, barra de ferramentas e barra lateral e inferior
 set guioptions-=T guioptions-=m guioptions-=r guioptions-=R guioptions-=l guioptions-=L guioptions-=b
 
-" Ir para linha anterior/próxima com as setas <Left>/<Right>
+" Soft word wrap
+set wrap linebreak nolist
+
+" Ir para linha anterior/próxima com as setas <Left>/<Right> no início/final
 set whichwrap=b,s,<,>,[,]
 
 " Símbolo para indicar wrap
