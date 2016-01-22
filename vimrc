@@ -47,9 +47,9 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 au VimEnter * call add(NERDTreeIgnore, '\.pyc$')
 
 " Remove espaços em branco à direita
-let g:RightTrimIgnore = ['gitcommit']
+let g:RightTrimIgnore = ['gitcommit', 'diff', 'fstab']
 function! RightTrim()
-    if !(&binary) && !(&filetype =~ join(g:RightTrimIgnore, "|"))
+    if !(&binary) && index(g:RightTrimIgnore, &filetype) == -1
         let [line, column] = [line("."), virtcol(".")]
         silent! %s/\s\+$//ge
         execute line printf("normal %d|", column)
