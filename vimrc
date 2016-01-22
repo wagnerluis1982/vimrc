@@ -132,6 +132,11 @@ set nospell spl=pt
 " Alt+, (Não Ignorar Palavra)
     nmap <A-,> zW
 
+" Ctrl+Shift+Insert (Colar do clipboard)
+    imap <C-S-Insert> <C-r>+
+" Shift+Insert (Colar do clipboard bem indentado)
+    imap <S-Insert> <C-o>"+P
+
 " Configurações de https://wiki.documentfoundation.org/Development/Vim
 source ~/.vim/lodev.vim
 
