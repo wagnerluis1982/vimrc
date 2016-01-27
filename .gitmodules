@@ -31,9 +31,12 @@
 [submodule "bundle/vim-snipmate"]
 	path = bundle/vim-snipmate
 	url = https://github.com/garbas/vim-snipmate.git
-[submodule "bundle/vim-markdown"]
-	path = bundle/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "bundle/vim-snippets"]
 	path = bundle/vim-snippets
 	url = https://github.com/honza/vim-snippets.git
+[submodule "bundle/vim-pandoc"]
+	path = bundle/vim-pandoc
+	url = https://github.com/vim-pandoc/vim-pandoc.git
+[submodule "bundle/vim-pandoc-syntax"]
+	path = bundle/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
