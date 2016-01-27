@@ -1,3 +1,9 @@
+" configurações para vim-pandoc
+set nofoldenable
+let g:pandoc#formatting#mode = 'h'
+let g:pandoc#formatting#textwidth = 80
+let g:pandoc#spell#enabled = 0
+
 " bold
 vmap <C-b> c****<Esc><Left>gP<Right>
 nmap <C-b> ciw****<Esc><Left>gP<Right>

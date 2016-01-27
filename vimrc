@@ -183,7 +183,3 @@ function ToggleFullScreen()
     call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
 endfunction
 map <silent> <F11> :call ToggleFullScreen()<CR>
-
-" Opções para vim-markdown
-set nofoldenable
-let g:vim_markdown_frontmatter = 1
