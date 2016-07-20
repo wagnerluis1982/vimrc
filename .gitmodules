@@ -43,3 +43,6 @@
 [submodule "bundle/vim-criticmarkup"]
 	path = bundle/vim-criticmarkup
 	url = https://github.com/vim-pandoc/vim-criticmarkup.git
+[submodule "bundle/LanguageTool"]
+	path = bundle/LanguageTool
+	url = https://github.com/vim-scripts/LanguageTool.git

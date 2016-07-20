@@ -47,7 +47,7 @@ let g:nerdtree_tabs_open_on_gui_startup = 0
 au VimEnter * call add(NERDTreeIgnore, '\.pyc$')
 
 " Remove espaços em branco à direita
-let g:RightTrimIgnore = ['gitcommit', 'diff', 'fstab']
+let g:RightTrimIgnore = ['gitcommit', 'diff', 'fstab', 'vim']
 function! RightTrim()
     if !(&binary) && index(g:RightTrimIgnore, &filetype) == -1
         let [line, column] = [line("."), virtcol(".")]
@@ -111,20 +111,20 @@ set nospell spl=pt
     nmap <F2> :NERDTreeTabsToggle<cr>
 " Ctrl+Up (Rola a tela para cima)
     nmap <C-Up> <C-y>
-    imap <C-Up> <Esc><C-y>a
+    imap <C-Up> <C-o><C-y>
 " Ctrl+Down (Rola a tela para baixo)
     nmap <C-Down> <C-e>
-    imap <C-Down> <Esc><C-e>a
+    imap <C-Down> <C-o><C-e>
 " Ctrl+S (Salvar)
     nmap <C-s> :w<cr>
     imap <C-s> <C-o>:w<cr>
 
 " Alt+[ (Ortografia Anterior)
     nmap <A-[> [s
-    imap <A-[> <Esc>[sa
+    imap <A-[> <C-o>[s
 " Alt+] (Ortografia Próxima)
     nmap <A-]> ]s
-    imap <A-]> <Esc>]sa
+    imap <A-]> <C-o>]s
 " Alt+= (Correção Ortográfica)
     nmap <A-=> z=
 " Alt+. (Ignorar Palavra)
@@ -138,16 +138,16 @@ set nospell spl=pt
     imap <S-Insert> <C-o>"+P
 
 " Configurações de https://wiki.documentfoundation.org/Development/Vim
-source ~/.vim/lodev.vim
+"source ~/.vim/lodev.vim
 
 " Outras configurações específicas
 source ~/.vim/texrc.vim
 
 " PyMode Lint
-let g:pymode_lint_cwindow = 0
-let g:pymode_lint_ignore = "E116,E128,E302"
+let g:pymode_lint_ignore = "E116,E128,E302,E701"
 
 " PyMode Rope
+let g:pymode_rope_completion = 0
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_complete_on_dot = 0
 
@@ -156,7 +156,15 @@ function! NetReadFixup(method,line1,line2)
 endfunction
 
 " TableMode compatível com Pandoc
-"let g:table_mode_corner_corner = '+'
+function TogglePandocTable()
+    if g:table_mode_corner_corner == '|'
+        let g:table_mode_corner_corner = '+'
+        let g:table_mode_header_fillchar = '='
+    else
+        let g:table_mode_corner_corner = '|'
+        let g:table_mode_header_fillchar = '-'
+    endif
+endfunction
 
 " Removendo o menu, barra de ferramentas e barra lateral e inferior
 set guioptions-=T guioptions-=m guioptions-=r guioptions-=R guioptions-=l guioptions-=L guioptions-=b
@@ -183,3 +191,17 @@ function ToggleFullScreen()
     call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
 endfunction
 map <silent> <F11> :call ToggleFullScreen()<CR>
+
+" LanguageTool
+let g:languagetool_jar='$HOME/Programs/LanguageTool-3.2/languagetool-commandline.jar'
+
+" CriticMarkup question
+function CriticMarkupQuestion()
+    let choice = confirm("CriticMarkup", "&Accept\n&Reject", 1, "Q")
+    if choice == 1
+        Critic accept
+    elseif choice == 2
+        Critic reject
+    endif
+endfunction
+nmap <Leader>c :call CriticMarkupQuestion()<cr>

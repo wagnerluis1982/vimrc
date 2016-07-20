@@ -4,11 +4,11 @@ let g:pandoc#formatting#mode = 'h'
 let g:pandoc#formatting#textwidth = 80
 let g:pandoc#spell#enabled = 0
 
-" bold
-vmap <C-b> c****<Esc><Left>gP<Right>
-nmap <C-b> ciw****<Esc><Left>gP<Right>
+" " bold
+" vmap <Leader>bb c****<Esc><Left>gP<Right>
+" nmap <Leader>bb ciw****<Esc><Left>gP<Right>
 " emphasize
-vmap <C-i> c**<Esc>gP
-nmap <C-i> ysiw*E
+vmap <Leader>ii c**<Esc>gP
+nmap <Leader>ii ysiw*E
 " comment selection
 vmap <Leader>C c<!----><Esc>2<Left>gP<Right>
